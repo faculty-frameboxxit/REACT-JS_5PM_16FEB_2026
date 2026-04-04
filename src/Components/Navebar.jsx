@@ -1,36 +1,27 @@
-import React from "react";
-import Navbar from 'react-bootstrap/Navbar'
+import React, { useState } from 'react'
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Link, Outlet } from 'react-router-dom'
+import Home from './Home'
 
 function Navebar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-          <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+    <>
+    <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+          <Navbar href="#home"><Link to={"/"}>Navbar</Link></Navbar>
+          <Nav className="me-auto">
+            <Nav href="#home"><Link to={"home"}>Home</Link></Nav>
+            <Nav href="#features"><Link to={"about"}>About</Link></Nav>
+            <Nav href="#pricing"><Link to={"blog"}>Blog</Link></Nav>
+            {/* <Nav href="#ref"><Link to={"ref"}>UseRef</Link></Nav> */}
+            {/* <Nav href="#compa"><Link to={"compA"}>CompA</Link></Nav> */}
+            <Nav href="#ref"><Link to={"ref"}>ref</Link></Nav>
+          </Nav>
+        </Container>
+      </Navbar>
+      <Outlet/>
+    </>
+  )
 }
 
-export default Navebar;
+export default Navebar

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="user_name" id="user_name" >
+    <button onclick="Click()">click me </button>
+    <p name="output" id="output" ></p>
+    <script>
+        let my_arr = ["a","b","c"]
+        check()
+        // let show =document.getElementById("output").value;
+        console.log(my_arr);
+        
+        function check() {
+            for (const key in my_arr) {
+                // console.log(key);
+                console.log(my_arr[key]);
+            }
+            // let abc = document.getElementById("output").innerHTML=my_arr[key]
+           
+            
+        //     my_arr.map((abc)=> console.log( my_arr[]))
+        }
+        function Click() {
+            let val = document.getElementById("user_name").value;
+            console.log(val);
+            
+        }
+        </script>
+</body>
+</html>

@@ -14,3 +14,30 @@ button {
   padding: 10px 15px;
   cursor: pointer;
 }
+.button-bg-color{
+  background-color: aqua;
+  color: black;
+  border: 2px solid;
+}
+.button-bg-color:hover{
+  background-color: black;
+  color: white;
+  border-color: yellow ;
+}
+.input-width{
+  /* width: 40%; */
+  border: 2px solid;
+  /* margin: 0 auto; */
+}
+.login-page-button{
+  background-color: cadetblue;
+  color: white;
+  border: 2px solid black;
+  padding:5px 30px;
+  margin: 30px 0 0 0 ;
+}
+.login-div{
+  width: 30%;
+  margin: 0 auto;
+  padding: 30px;
+}

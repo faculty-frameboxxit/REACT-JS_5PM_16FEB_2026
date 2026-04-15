@@ -1,0 +1,37 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "Denish",
+      "password": "Denish@123",
+      "email": "denish@gmail.com",
+      "rol": 1
+    },
+    {
+      "id": "2",
+      "name": "Het",
+      "password": "Het@123",
+      "email": "Het@gmail.com",
+      "rol": 2
+    },
+    {
+      "name": "Kavya",
+      "password": "Kavya@1234",
+      "email": "kavya@gmail.com",
+      "id": "lY_HccGelvs"
+    },
+    {
+      "name": "",
+      "password": "",
+      "email": "",
+      "id": "le6X9GDlMEs"
+    },
+    {
+      "name": "",
+      "password": "",
+      "email": "",
+      "id": "nHMo7L-Z5Wo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

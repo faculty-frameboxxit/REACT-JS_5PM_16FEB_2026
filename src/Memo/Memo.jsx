@@ -36,6 +36,7 @@ function Memo() {
 
     return num * 5
   }
+  // let data = add(20)
 
   let data = useMemo(()=> add(input),[input])
   return (

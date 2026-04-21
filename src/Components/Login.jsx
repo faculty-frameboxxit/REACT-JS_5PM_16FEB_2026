@@ -94,36 +94,105 @@
 // }
 
 // export default Login;
-import React from "react";
+// import React from "react";
+// import { Button, Form } from "react-bootstrap";
+// // import Navebar from "./Navebar";
+
+// function Login() {
+//   return (
+//     <>
+//       {/* <Navebar /> */}
+//       <div className="login-div border border-5 border-secondary mt-5 rounded-3 ">
+//         <Form.Label>Email : </Form.Label>
+//         <Form.Control
+//           type="email"
+//           id="inputPassword5"
+//           // size="20"
+//           className="input-width"
+//           placeholder="Enter email"
+//         />
+//         <Form.Label>Password : </Form.Label>
+//         <Form.Control
+//           type="password"
+//           id="inputPassword5"
+//           // size="20"
+//           className="input-width"
+//           placeholder="Enter Password"
+//         />
+//         <div className="text-center">
+//           <Button className="login-page-button ">Login</Button>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Login;
+
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-// import Navebar from "./Navebar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // const [cookie,setCookie] = useCookies("auth")
+
+  const handleLogin = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/user");
+      // const newData = res.data.filter((data)=> )
+
+      const user = res.data.find(
+        (u) => u.email === email && u.password === password,
+        (u) => u.rol === rol
+      );
+
+      if (user) {
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        navigate("/home");
+      } else {
+        setError("Invalid email or password");
+      }
+      if (user.rol === 1) {
+        navigate("/admin");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <>
-      {/* <Navebar /> */}
-      <div className="login-div border border-5 border-secondary mt-5 rounded-3 ">
-        <Form.Label>Email : </Form.Label>
-        <Form.Control
-          type="email"
-          id="inputPassword5"
-          // size="20"
-          className="input-width"
-          placeholder="Enter email"
-        />
-        <Form.Label>Password : </Form.Label>
-        <Form.Control
-          type="password"
-          id="inputPassword5"
-          // size="20"
-          className="input-width"
-          placeholder="Enter Password"
-        />
-        <div className="text-center">
-          <Button className="login-page-button ">Login</Button>
-        </div>
+    <div className="login-div border border-5 border-secondary mt-5 rounded-3">
+      <Form.Label>Email :</Form.Label>
+      <Form.Control
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter email"
+      />
+
+      <Form.Label>Password :</Form.Label>
+      <Form.Control
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter Password"
+      />
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <div className="text-center">
+        <Button onClick={handleLogin}>Login</Button>
       </div>
-    </>
+    </div>
   );
 }
 

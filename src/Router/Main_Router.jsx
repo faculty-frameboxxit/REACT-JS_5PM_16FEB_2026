@@ -32,6 +32,9 @@ import Register from "../Components/Register";
 import React_query from "../React Query/React_query";
 import ErrorBoundary from "../ErrorBoundary";
 import Counter from "../Count/Counter";
+import Profile from "../Components/Profile";
+import Admin from "../Components/Admin";
+import Edit from "../Components/Edit";
 
 function Main_Router() {
   // const Home = lazy(() => import("../Components/Home"));
@@ -80,6 +83,9 @@ function Main_Router() {
         <Route path="register" element={<Register />} />
         <Route path="reactquery" element={<React_query />} />
         <Route path="counter" element={<Counter />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="admin" element={<Admin />} />
+        <Route path="edit/:id" element={<Edit />} />
       </Route>
     </Routes>
   );

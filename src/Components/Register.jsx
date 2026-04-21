@@ -5,22 +5,59 @@ import { useFormAction, useNavigate } from "react-router-dom";
 
 function Register() {
   const [item, setItem] = useState([]);
-  const navigation = useNavigate()
+  const navigation = useNavigate();
   const [data, action, pending] = useActionState(adduser, undefined);
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:3000/user")
-//       .then((res) => setItem(res.data))
-//       .catch((err) => console.error(err));
-//   }, []);
-  function adduser(pre, formdata) {
-    console.log(data);
+
+  //   useEffect(() => {
+  //     axios
+  //       .get("http://localhost:3000/user")
+  //       .then((res) => setItem(res.data))
+  //       .catch((err) => console.error(err));
+  //   }, []);
+  // async function adduser(pre, formdata) {
+  //   const res = await axios.get("http://localhost:3000/user");
+  //   const users = res.data;
+    // const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+    // console.log(data);
+  //   const name = formdata.get("username");
+  //   const email = formdata.get("email");
+  //   const password = formdata.get("password");
+  //   console.log(name, email, password);
+  //   axios.post("http://localhost:3000/user", {
+  //     id: newId,
+  //     name: name,
+  //     password: password,
+  //     email: email,
+  //     rol:"2"
+  //   });
+  //   navigation("/login");
+  // }
+  async function adduser(pre, formdata) {
+    const res = await axios.get("http://localhost:3000/user");
+    const users = res.data;
+    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+
     const name = formdata.get("username");
     const email = formdata.get("email");
     const password = formdata.get("password");
-    console.log(name, email, password);
-    axios.post("http://localhost:3000/user",{"name":name,"password":password,"email":email})
-    navigation("/login")
+
+    
+    const exists = users.find((u) => u.email === email);
+
+    if (exists) {
+      alert("User already exists!");
+      return;
+    }
+
+    await axios.post("http://localhost:3000/user", {
+      id:newId,
+      name,
+      email,
+      password,
+      rol: "2",
+    });
+
+    navigation("/login");
   }
   return (
     <>
